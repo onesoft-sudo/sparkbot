@@ -107,5 +107,7 @@ class App(private val defaultPrefix: String = "-") {
             name = "Version"
             value = this@App.discord?.properties?.bot?.get("version") ?: "Unknown"
         }
+
+        embedBuilder.color = dev.kord.common.Color(0, 123, 255)
     }
 }
