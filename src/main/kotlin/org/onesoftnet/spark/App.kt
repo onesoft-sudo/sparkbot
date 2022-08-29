@@ -98,7 +98,12 @@ class App(private val defaultPrefix: String = "-") {
         this.database = discord.getInjectionObjects(Database::class)
     }
 
-    private fun configureMentionEmbed(embedBuilder: EmbedBuilder, discordContext: DiscordContext) {
+    private suspend fun configureMentionEmbed(embedBuilder: EmbedBuilder, discordContext: DiscordContext) {
+        if (config[discordContext.guild?.id?.value]?.channel == discordContext.channel.id.value) {
+            discordContext.message?.delete()
+            return
+        }
+
         embedBuilder.author {
             name = this@App.discord?.properties?.bot?.get("name")
         }

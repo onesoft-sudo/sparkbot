@@ -26,13 +26,55 @@ import me.jakejmattson.discordkt.extensions.pfpUrl
 import org.onesoftnet.spark.App
 import org.onesoftnet.spark.services.Database
 import com.mongodb.client.model.Sorts.descending
+import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.reply
 import dev.kord.core.cache.data.EmojiData
 import dev.kord.core.entity.GuildEmoji
+import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.x.emoji.Emojis
 import dev.kord.x.emoji.from
 import org.bson.Document
 
+suspend fun addIssue(message: Message, database: Database, guildId: Snowflake?) {
+    message.addReaction(ReactionEmoji.Unicode("⏰"))
+
+    val col = database.db.getCollection("issues");
+    val prevIssue = col.find().sort(descending("createdAt")).limit(1).first()
+    val issueNumber = (prevIssue?.getInteger("issueNumber") ?: 0) + 1
+
+    val doc = Document("issueNumber", issueNumber)
+        .append("guild", guildId!!.value.toString())
+        .append("channel", message.channelId.value.toString())
+        .append("user", message.author!!.id.value.toString())
+        .append("message", message.id.value.toString())
+        .append("status", 0)
+        .append("createdAt", Clock.System.now().toString())
+        .append("updatedAt", Clock.System.now().toString())
+
+    col.insertOne(doc)
+
+    message.channel.createMessage {
+        embed {
+            title = "Issue #$issueNumber"
+
+            author {
+                name = message.author?.tag
+                icon = message.author?.pfpUrl
+            }
+
+            description = message.content
+
+            footer {
+                text = "Status: Pending Review"
+            }
+
+            timestamp = Clock.System.now()
+        }
+    }
+
+    message.delete("Cleanup original message after saving it to the database")
+}
 
 @Suppress("unused")
 fun messageEventListener(database: Database) = listeners {
@@ -48,47 +90,13 @@ fun messageEventListener(database: Database) = listeners {
             return@on
         }
 
-        if (config.channel != message.channelId.value) {
-            println("This channel is not set as issue tracking channel. Channel ID: ${message.channelId}")
+        if (message.content.trim() == "<@${App.app.discord!!.kord.selfId.value}>" || message.content.trim() == "<@!${App.app.discord!!.kord.selfId.value}>") {
             return@on
         }
 
-        message.addReaction(ReactionEmoji.Unicode("⏰"))
-
-        val col = database.db.getCollection("issues");
-        val prevIssue = col.find().sort(descending("createdAt")).limit(1).first()
-        val issueNumber = (prevIssue?.getInteger("issueNumber") ?: 0) + 1
-
-        val doc = Document("issueNumber", issueNumber)
-                    .append("guild", guildId!!.value.toString())
-                    .append("channel", message.channelId.value.toString())
-                    .append("user", message.author!!.id.value.toString())
-                    .append("message", message.id.value.toString())
-                    .append("status", 0)
-                    .append("createdAt", Clock.System.now().toString())
-                    .append("updatedAt", Clock.System.now().toString())
-
-        col.insertOne(doc)
-
-        message.channel.createMessage {
-            embed {
-                title = "Issue #$issueNumber"
-
-                author {
-                    name = message.author?.tag
-                    icon = message.author?.pfpUrl
-                }
-
-                description = message.content
-
-                footer {
-                    text = "Status: Pending Review"
-                }
-
-                timestamp = Clock.System.now()
-            }
+        if (config.channel == message.channelId.value) {
+            addIssue(message, database, guildId);
+            return@on
         }
-
-        message.delete("Cleanup original message after saving it to the database")
     }
 }
