@@ -4,10 +4,8 @@
 
 package org.onesoftnet.spark.commands
 
-import dev.kord.common.entity.optional.optional
 import dev.kord.core.behavior.reply
 import me.jakejmattson.discordkt.arguments.AnyArg
-import me.jakejmattson.discordkt.arguments.EveryArg
 import me.jakejmattson.discordkt.commands.commands
 
 @Suppress("unused")

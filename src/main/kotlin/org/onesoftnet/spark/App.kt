@@ -15,8 +15,9 @@ import me.jakejmattson.discordkt.commands.DiscordContext
 import me.jakejmattson.discordkt.dsl.bot
 import org.onesoftnet.spark.dataclasses.Config
 import org.onesoftnet.spark.services.Database
+import java.awt.Color
 
-class App(val defaultPrefix: String = "-") {
+class App(private val defaultPrefix: String = "-") {
     private lateinit var database: Database
     var discord: Discord? = null;
     private val token = System.getenv("TOKEN")
@@ -46,16 +47,17 @@ class App(val defaultPrefix: String = "-") {
                 entitySupplyStrategy = EntitySupplyStrategy.cacheWithRestFallback
                 deleteInvocation = false
                 recommendCommands = false
+                theme = Color(0, 123, 255)
 
                 intents = Intents(*(this@App.registerIntents()))
             }
 
-            mentionEmbed() {
+            mentionEmbed {
                 configureMentionEmbed(this, it);
             }
 
             onException {
-                println(exception.message)
+                println("Exception: " + exception.message)
             }
 
             onStart {
