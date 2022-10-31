@@ -1,3 +1,19 @@
+## [0.2.1](https://github.com/onesoft-sudo/sparkbot/compare/v0.3.0...v0.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* pre-release hook ([42679e9](https://github.com/onesoft-sudo/sparkbot/commit/42679e939af58eba0bea0d81f78d2aa529716de2))
+* remove unneeded files ([48f009e](https://github.com/onesoft-sudo/sparkbot/commit/48f009e84f48346e119c8cf5bda46ed4a25cc7c0))
+* specify project version ([5ad4fd8](https://github.com/onesoft-sudo/sparkbot/commit/5ad4fd8662fd9348815f9bc9eb087b03322cef4a))
+* workflows ([b8ee656](https://github.com/onesoft-sudo/sparkbot/commit/b8ee65605c37bd565fd41d4854e9f964b971e0cd))
+* workflows ([af3e176](https://github.com/onesoft-sudo/sparkbot/commit/af3e1760931324f867b48eafa46852becf439da2))
+* workflows ([ae36d8d](https://github.com/onesoft-sudo/sparkbot/commit/ae36d8d901119d4ccec1c64b4161dc7af447be39))
+* workflows ([f5e0f6a](https://github.com/onesoft-sudo/sparkbot/commit/f5e0f6abfe504d96832a08ac787c4f0e102a3bd4))
+* workflows ([da6cdc1](https://github.com/onesoft-sudo/sparkbot/commit/da6cdc16b9df92cf1a52fb90f2a6112c3654c1ef))
+
+
+
 # [0.3.0](https://github.com/onesoft-sudo/sparkbot/compare/v0.2.0...v0.3.0) (2022-10-31)
 
 
