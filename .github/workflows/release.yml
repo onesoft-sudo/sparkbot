@@ -23,7 +23,7 @@ jobs:
           version-file: '.version.json'
           git-user-name: "Conventional Release Action"
           git-user-email: rakinar2@onesoftnet.eu.org
-          pre-commit: ".github/pre-changelog.js"
+          pre-commit: ".github/pre-release.js"
 
       - name: Create Release
         uses: actions/create-release@v1
