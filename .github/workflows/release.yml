@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: "Create temporary version file"
+        run: node ${{ env.GITHUB_WORKSPACE }}/.github/pre-changelog.js
+
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.15.0
@@ -20,7 +23,6 @@ jobs:
           version-file: '.version.json'
           git-user-name: "Conventional Release Action"
           git-user-email: rakinar2@onesoftnet.eu.org
-          pre-changelog-generation: ".github/pre-release.js"
           pre-commit: ".github/pre-changelog.js"
 
       - name: Create Release
