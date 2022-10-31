@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/onesoft-sudo/sparkbot/compare/v0.2.0...v0.3.0) (2022-10-31)
+
+
+### Features
+
+* add about command ([c998abe](https://github.com/onesoft-sudo/sparkbot/commit/c998abe169d57627c639b553489c940c29b0219b))
+
+
+
 # [0.2.0](https://github.com/onesoft-sudo/sparkbot/compare/v0.1.0...v0.2.0) (2022-10-31)
 
 
