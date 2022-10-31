@@ -1,4 +1,14 @@
-# 0.1.0 (2022-10-29)
+# [0.2.0](https://github.com/onesoft-sudo/sparkbot/compare/v0.1.0...v0.2.0) (2022-10-31)
+
+
+### Features
+
+* add basic command handler ([ef05c00](https://github.com/onesoft-sudo/sparkbot/commit/ef05c00fbd5e90e03dede35ef381a02ac6c42a99))
+* add slash command support ([9a9bb7e](https://github.com/onesoft-sudo/sparkbot/commit/9a9bb7e8008564527aa6191b0734231819488b1b))
+
+
+
+# [0.1.0](https://github.com/onesoft-sudo/sparkbot/compare/c7f9bf48b8fcf47a69918fd199eca9091fb83071...v0.1.0) (2022-10-29)
 
 
 ### Bug Fixes
