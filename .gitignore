@@ -21,3 +21,4 @@ commands.md
 build
 tmp/
 .env.json
+.version.json

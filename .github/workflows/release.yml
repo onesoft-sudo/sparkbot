@@ -17,10 +17,11 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3.15.0
         with:
           github-token: ${{ secrets.ACTIONS_SECRET }}
-          version-file: '.env.json'
+          version-file: '.version.json'
           git-user-name: "Conventional Release Action"
           git-user-email: rakinar2@onesoftnet.eu.org
-          pre-commit: ".github/pre-release.js"
+          pre-changelog-generation: ".github/pre-release.js"
+          pre-commit: ".github/pre-changelog.js"
 
       - name: Create Release
         uses: actions/create-release@v1
