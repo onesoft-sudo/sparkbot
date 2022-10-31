@@ -19,3 +19,4 @@ commands.md
 
 # Ignore Gradle build output directory
 build
+tmp/
