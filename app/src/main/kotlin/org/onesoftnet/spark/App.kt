@@ -1,6 +1,7 @@
 package org.onesoftnet.spark;
 
 import kotlinx.serialization.json.Json;
+import org.onesoftnet.spark.utils.GlobalSettings;
 import org.onesoftnet.spark.utils.Config;
 import java.io.File;
 import kotlinx.serialization.decodeFromString;
@@ -15,8 +16,8 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 class App {
     val token = System.getenv("TOKEN");
     val prefix = System.getenv("SPARK_PREFIX") ?: ".";
-    val file = File("$prefix/config/config.json");
-    val config = Json.decodeFromString<Map<String, Config>>(file.readText());
+    val config = Json.decodeFromString<Map<String, Config>>(File("$prefix/config/config.json").readText());
+    val globalSettings = Json.decodeFromString<GlobalSettings>(File("$prefix/config/global.json").readText());
     val jdaBuilder = JDABuilder.createDefault(token);
     var jda: JDA? = null;
     val commandManager = CommandManager(this);
@@ -61,10 +62,12 @@ fun main() {
     app.boot();
     app.registerEvents(
         MessageEventListener(),
-        ReadyEventListener()
+        ReadyEventListener(),
+        SlashCommandEventListener()
     );
 
     app.registerCommands(
-        TestCommand()
+        TestCommand(),
+        AboutCommand()
     );
 }

@@ -47,6 +47,6 @@ class MessageEventListener : ListenerAdapter() {
             args += arg;
         }
 
-        App.app?.commandManager!!.runCommand(commandName, event, args);
+        App.app?.commandManager!!.runMessageCommand(commandName, event, args);
     }
 }
