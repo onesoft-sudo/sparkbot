@@ -1,3 +1,3 @@
 # SparkBot
 
-SparkBot is an issue tracker bot.
+SparkBot is an issue tracker bot. 
