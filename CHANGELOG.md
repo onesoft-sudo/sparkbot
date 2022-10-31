@@ -1,3 +1,18 @@
+# [0.4.0](https://github.com/onesoft-sudo/sparkbot/compare/v0.2.1...v0.4.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* workflows ([ec515cf](https://github.com/onesoft-sudo/sparkbot/commit/ec515cf52efffa5e851530fb9273a97b74b0a328))
+
+
+### Features
+
+* update readme ([92ef00a](https://github.com/onesoft-sudo/sparkbot/commit/92ef00a43d1c3ad373659783d9949969b21ee8a6))
+* update version ([c9374ac](https://github.com/onesoft-sudo/sparkbot/commit/c9374ac148e083e5a236fa811ebc4328cb6fb810))
+
+
+
 ## [0.2.1](https://github.com/onesoft-sudo/sparkbot/compare/v0.3.0...v0.2.1) (2022-10-31)
 
 
