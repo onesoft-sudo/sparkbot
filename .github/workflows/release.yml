@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: "Create temporary version file"
-        run: node ${{ env.GITHUB_WORKSPACE }}/.github/pre-changelog.js
+        run: node $env:GITHUB_WORKSPACE/.github/pre-changelog.js
 
       - name: Conventional Changelog Action
         id: changelog
