@@ -1,4 +1,6 @@
 {
     "homeGuild": "911987536379912193",
-    "registerCommandsAtBoot": false
+    "registerCommandsAtBoot": false,
+    "checkEmoji": "1034487044333895731",
+    "errorEmoji": "979753398637310004"
 }

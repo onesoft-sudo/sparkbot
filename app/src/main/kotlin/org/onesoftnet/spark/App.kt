@@ -7,11 +7,15 @@ import java.io.File;
 import kotlinx.serialization.decodeFromString;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.onesoftnet.spark.events.*;
 import org.onesoftnet.spark.commands.*;
 import java.util.stream.Stream;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.onesoftnet.spark.core.Command;
+import org.onesoftnet.spark.core.CommandManager;
+import org.onesoftnet.spark.core.SuggestionManager;
 
 class App {
     val token = System.getenv("TOKEN");
@@ -21,6 +25,7 @@ class App {
     val jdaBuilder = JDABuilder.createDefault(token);
     var jda: JDA? = null;
     val commandManager = CommandManager(this);
+    val suggestionManager = SuggestionManager(this);
 
     companion object {
         var app: App? = null;
@@ -54,6 +59,10 @@ class App {
 
     public fun registerCommands(vararg commands: Command) {
         this.commandManager.addCommands(*commands);
+    }
+
+    public fun getHomeGuild(): Guild {
+        return jda!!.getGuildById(globalSettings.homeGuild)!!;
     }
 }
 

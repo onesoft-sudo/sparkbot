@@ -1,7 +1,7 @@
 package org.onesoftnet.spark.commands;
 
-import org.onesoftnet.spark.CommandPayload;
-import org.onesoftnet.spark.Command;
+import org.onesoftnet.spark.core.CommandPayload;
+import org.onesoftnet.spark.core.Command;
 import org.onesoftnet.spark.App;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;

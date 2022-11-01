@@ -5,5 +5,7 @@ import kotlinx.serialization.Serializable;
 @Serializable
 data class GlobalSettings(
     val homeGuild: String,
-    val registerCommandsAtBoot: Boolean
+    val registerCommandsAtBoot: Boolean,
+    val checkEmoji: String,
+    val errorEmoji: String
 );

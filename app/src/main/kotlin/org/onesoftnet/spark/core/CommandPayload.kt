@@ -1,4 +1,4 @@
-package org.onesoftnet.spark;
+package org.onesoftnet.spark.core;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
