@@ -7,6 +7,5 @@ import org.onesoftnet.spark.App;
 class ReadyEventListener : ListenerAdapter() {
     override fun onReady(event: ReadyEvent) {
         println("Bot is ready!");
-        App.app?.commandManager!!.registerSlashCommands();
     }
 }

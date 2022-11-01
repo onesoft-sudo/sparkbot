@@ -1,3 +1,4 @@
 {
-    "homeGuild": "911987536379912193"
+    "homeGuild": "911987536379912193",
+    "registerCommandsAtBoot": false
 }

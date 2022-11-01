@@ -38,9 +38,10 @@ class App {
         setIntents();
     }
 
-    public fun boot() {
+    public fun boot(callback: (app: App) -> Unit) {
         jda = jdaBuilder.build();
         registerEvents();
+        callback(this);
     }
 
     protected fun setIntents() {
@@ -56,10 +57,16 @@ class App {
     }
 }
 
-fun main() {  
+fun main(args: Array<String>) {  
     val app = App();
     
-    app.boot();
+    app.boot {
+        if (args.contains("--commands") || app.globalSettings.registerCommandsAtBoot) {
+            println("Registering application commands...");
+            app.commandManager.registerSlashCommands(args.contains("--global"));
+        }
+    };
+
     app.registerEvents(
         MessageEventListener(),
         ReadyEventListener(),
