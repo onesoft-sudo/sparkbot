@@ -9,6 +9,8 @@ plugins {
     application
 }
 
+version = "0.3.0"
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -43,8 +45,14 @@ application {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "org.onesoftnet.spark.AppKt"
+        attributes(mapOf(
+            "Implementation-Title" to rootProject.name,
+            "Implementation-Version" to project.version,
+            "Main-Class" to "org.onesoftnet.spark.AppKt"
+        ))
     }
+
+    archiveBaseName.set(rootProject.name)
 }
 
 val fatJar = task("fatjar", type = Jar::class) {
